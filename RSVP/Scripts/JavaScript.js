@@ -1,4 +1,5 @@
-﻿function validateRSVP() {
+﻿
+function validateRSVP() {
     var errorString = "";
 
     errorString += validateFirstName();
