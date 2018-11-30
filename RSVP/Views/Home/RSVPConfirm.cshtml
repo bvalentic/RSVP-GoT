@@ -32,5 +32,14 @@
 
 <h4>@ViewBag.ConfirmMessage</h4>
 
+@{
+    if (Model.Attending)
+    {
+        <p>How about submitting the dish you're bringing while you're at it?</p>
+        <p><a class="btn btn-primary" href="/Home/BringADish">Dish it out &raquo;</a></p>
+    }
+}
+
+
 
 
