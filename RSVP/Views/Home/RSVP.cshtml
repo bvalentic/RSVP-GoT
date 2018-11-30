@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "R.S.V.P.";
+}
+<div class="jumbotron">
+    <h2>R.S.V.P.</h2>
+    <h3>@ViewBag.Message</h3>
+    <h6>That's French for "tell us if you're coming"</h6>
+</div>
+
+<form action="~/Home/RSVPConfirm/" method="post">
+    <fieldset>
+        <legend>Guest Information</legend>
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <small id="emailHelp" class="form-text text-muted">We only share your email with companies that pay for it</small>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <legend>Attendance Information</legend>
+        <fieldset>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="Attending" id="Attending" value="true" required>
+                    I will be attending
+                    <br>
+                    <input type="radio" class="form-check-input" name="Attending" id="NotAttending" value="false" required>
+                    I will not be attending
+                    <br>
+                </label>
+            </div>
+        </fieldset>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" name="plusOne" id="plusOne" value="true">
+                I will be bringing a guest
+            </label>
+        </div>
+    </fieldset>
+        <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
