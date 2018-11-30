@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Dish Confirmation";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<div>
+    <h4>Here's what we've got:</h4>
+    <ul>
+        <li>Name: @Model.GuestName</li>
+        <li>Phone: @Model.Phone</li>
+        <li>Dish: @Model.DishName</li>
+        <li>Description: @Model.Description</li>
+        <li>Special considerations:
+            <ul>
+                @if (Model.GlutenFree || Model.Vegan || Model.Vegetarian)
+                {
+                    if (Model.GlutenFree)
+                    {
+                        <li>Gluten free</li>
+                    }
+                    if (Model.Vegan)
+                    {
+                        <li>Vegan</li>
+                    }
+                    if (Model.Vegetarian)
+                    {
+                        <li>Vegetarian</li>
+                    }
+                }
+                else
+                {
+                    <li>None</li>
+                }
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<h4>@ViewBag.ConfirmMessage</h4>

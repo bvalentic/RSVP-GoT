@@ -7,7 +7,7 @@
     <h6>That's French for "tell us if you're coming"</h6>
 </div>
 
-<form action="~/Home/RSVPConfirm/" method="post">
+<form action="~/Home/RSVPConfirm/" method="post" onsubmit="return ValidateRSVP()">
     <fieldset>
         <legend>Guest Information</legend>
         <div class="form-group">
@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We only share your email with companies that pay for it</small>
         </div>
     </fieldset>
@@ -47,4 +47,5 @@
     </fieldset>
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<script type="text/javascript" src="~/JavaScript.js"></script>
 

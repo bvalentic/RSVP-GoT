@@ -16,6 +16,12 @@ namespace RSVP.Models
 
     public class Dish
     {
-
+        public string GuestName { get; set; }
+        public string Phone { get; set; }
+        public string DishName { get; set; }
+        public string Description { get; set; }
+        public bool GlutenFree { get; set; }
+        public bool Vegan { get; set; }
+        public bool Vegetarian { get; set; }
     }
 }

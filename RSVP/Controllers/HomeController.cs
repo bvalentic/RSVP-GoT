@@ -37,15 +37,18 @@ namespace RSVP.Controllers
             return View(guest);
         }
 
-        public ActionResult BringADish()
+        public ActionResult BringADish(Guest guest)
         {
             ViewBag.Message = "What dish are you bringing?";
 
-            return View();
+            return View(guest);
         }
 
         public ActionResult DishConfirm(Dish dish)
         {
+            ViewBag.Message = "";
+            ViewBag.ConfirmMessage = "Great dish! Definitely big party material!";
+
             return View(dish);
         }
     }

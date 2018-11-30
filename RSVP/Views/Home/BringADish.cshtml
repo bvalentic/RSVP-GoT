@@ -6,4 +6,40 @@
     <h3>@ViewBag.Message</h3>
     <h6>That's English for "what dish are you bringing?"</h6>
 </div>
-<p>Use this area to provide additional information.</p>
+
+<form action="~/Home/DishConfirm/" method="post" onsubmit="return ValidateDish()">
+    <fieldset>
+        <legend>Guest Information</legend>
+        <div class="form-group">
+            <label for="firstName">Full name</label>
+            <input type="text" class="form-control" id="guestName" name="guestName" placeholder="Full name" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Phone number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="555-555-5555" required>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <legend>Dish Information</legend>
+        <fieldset>
+            <div class="form-group">
+                <label for="dishName">Dish name</label>
+                <input type="text" class="form-control" id="dishName" name="dishName" placeholder="Dish name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Dish description</label>
+                <input type="text" class="form-control" id="description" name="description" placeholder="Description" required>
+            </div>
+
+        </fieldset>
+        <div class="form-check">
+            <label class="form-check-label">
+                Select all that apply: <br>
+                <input class="form-check-input" type="checkbox" name="glutenFree" id="glutenFree" value="true">Gluten free <br>
+                <input class="form-check-input" type="checkbox" name="vegan" id="vegan" value="true">Vegan <br>
+                <input class="form-check-input" type="checkbox" name="vegetarian" id="vegetarian" value="true">Vegetarian <br>
+            </label>
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

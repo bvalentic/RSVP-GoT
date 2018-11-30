@@ -171,6 +171,7 @@
     <Content Include="Views\Home\RSVP.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\RSVPConfirm.cshtml" />
+    <Content Include="Views\Home\DishConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
