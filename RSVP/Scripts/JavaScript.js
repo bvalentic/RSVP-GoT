@@ -1,19 +1,19 @@
 ﻿
+document.getElementById("date").style.visibility = "hidden";
+
 function validateRSVP() {
-    var errorString = "";
+    var numError = 0;
 
-    errorString += validateFirstName();
-    errorString += validateLastName();
-    errorString += validateEmail();
+    numError += validateFirstName();
+    numError += validateLastName();
+    numError += validateEmail();
 
-    if (errorString.length >= 1) {
-        alert(errorString);
+    if (numError > 0) {
         return false;
     }
     else {
         return true;
     }
-
 }
 
 function validateFirstName() {
@@ -21,10 +21,11 @@ function validateFirstName() {
     var regEx = /[^a-zA-Z]+/;
 
     if (regEx.test(firstName)) {
-        return "First name entry invalid. \n";
+        document.getElementById("firstName").classList.add("is-invalid");
+        return 1
     }
     else {
-        return "";
+        return 0;
     }
 }
 
@@ -33,21 +34,34 @@ function validateLastName() {
     var regEx = /[^a-zA-Z]+/;
 
     if (regEx.test(lastName)) {
-        return "Last name entry invalid. \n";
+        document.getElementById("lastName").classList.add("is-invalid");
+        return 1
     }
     else {
-        return "";
+        return 0;
     }
 }
 
 function validateEmail() {
     var email = document.getElementById("email").value;
-    var regEx = /^([a-zA-Z0-9_\-\.]+)&#64([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+    var regEx = /^([a-zA-Z0-9_\-\.]+)\@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
     if (!regEx.test(email)) {
-        return "Email address invalid. \n";
+        document.getElementById("email").classList.add("is-invalid");
+        return 1
     }
     else {
-        return "";
+        return 0;
     }
+}
+
+function revealDate() {
+    document.getElementById("date").style.visibility = "visible";
+    document.getElementById("plusOne").disabled = false;
+}
+
+function hideDate() {
+    document.getElementById("date").style.visibility = "hidden";
+    document.getElementById("plusOne").checked = false;
+    document.getElementById("plusOne").disabled = true;
 }

@@ -10,18 +10,21 @@
 <form action="~/Home/RSVPConfirm/" method="post" onsubmit="return validateRSVP()">
     <fieldset>
         <legend>Guest Information</legend>
-        <div class="form-group">
-            <label for="firstName">First name</label>
+        <div class="form-group has-danger">
+            <label class="form-control-label" for="firstName">First name</label>
             <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+            <div class="invalid-feedback">First name entry invalid.</div>
         </div>
         <div class="form-group">
             <label for="lastName">Last name</label>
             <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+            <div class="invalid-feedback">Last name entry invalid.</div>
         </div>
         <div class="form-group">
             <label for="inputEmail">Email address</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We only share your email with companies that pay for it</small>
+            <div class="invalid-feedback">Email address invalid.</div>
         </div>
     </fieldset>
     <fieldset class="form-group">
@@ -29,10 +32,10 @@
         <fieldset>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="Attending" id="Attending" value="true" required>
+                    <input type="radio" class="form-check-input" name="Attending" id="Attending" value="true" required onclick="revealDate()">
                     I will be attending
                     <br>
-                    <input type="radio" class="form-check-input" name="Attending" id="NotAttending" value="false" required>
+                    <input type="radio" class="form-check-input" name="Attending" id="NotAttending" value="false" required onclick="hideDate()">
                     I will not be attending
                     <br>
                 </label>
@@ -44,61 +47,17 @@
                 I will be bringing a guest
             </label>
         </div>
+        <div class="form-check" id="date">
+            <label class="form-check-label">Select the date you will be attending:</label> <br>
+            <input type="radio" class="form-check-input" name="Date" id="DateOne" value="1" required>
+            12/15/2018
+            <br>
+            <input type="radio" class="form-check-input" name="Date" id="DateTwo" value="2" required>
+            12/22/2018
+            <br>
+        </div>
     </fieldset>
         <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-<script >
-    function validateRSVP() {
-        var errorString = "";
-
-        errorString += validateFirstName();
-        errorString += validateLastName();
-        errorString += validateEmail();
-
-        if (errorString.length >= 1) {
-            alert(errorString);
-            return false;
-        }
-        else {
-            return true;
-        }
-
-    }
-
-    function validateFirstName() {
-        var firstName = document.getElementById("firstName").value;
-        var regEx = /[^a-zA-Z]+/;
-
-        if (regEx.test(firstName)) {
-            return "First name entry invalid. \n";
-        }
-        else {
-            return "";
-        }
-    }
-
-    function validateLastName() {
-        var lastName = document.getElementById("lastName").value;
-        var regEx = /[^a-zA-Z]+/;
-
-        if (regEx.test(lastName)) {
-            return "Last name entry invalid. \n";
-        }
-        else {
-            return "";
-        }
-    }
-
-    function validateEmail() {
-        var email = document.getElementById("email").value;
-        var regEx = /^([a-zA-Z0-9_\-\.]+)@@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-
-        if (!regEx.test(email)) {
-            return "Email address invalid. \n";
-        }
-        else {
-            return "";
-        }
-    }
-</script>
+<script src="~/Scripts/JavaScript.js"></script>
 
