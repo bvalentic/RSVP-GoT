@@ -7,26 +7,17 @@
 <div>
     <h4>Here's what we've got:</h4>
     <ul>
-        <li>Name: @Model.GuestName</li>
-        <li>Phone: @Model.Phone</li>
+        <li>Name: @Model.PersonName</li>
+        <li>Phone: @Model.PhoneNumber</li>
         <li>Dish: @Model.DishName</li>
-        <li>Description: @Model.Description</li>
-        <li>Special considerations:
+        <li>Description: @Model.DishDescription</li>
+        <li>
+            Special considerations:
             <ul>
-                @if (Model.GlutenFree || Model.Vegan || Model.Vegetarian)
+                @if (Model.Option != null)
                 {
-                    if (Model.GlutenFree)
-                    {
-                        <li>Gluten free</li>
-                    }
-                    if (Model.Vegan)
-                    {
-                        <li>Vegan</li>
-                    }
-                    if (Model.Vegetarian)
-                    {
-                        <li>Vegetarian</li>
-                    }
+                    <li>@Model.Option</li>
+
                 }
                 else
                 {
@@ -38,3 +29,5 @@
 </div>
 
 <h4>@ViewBag.ConfirmMessage</h4>
+<p>Take a look at the other great dishes guests are bringing!</p>
+<p><a class="btn btn-primary" href="/Home/ViewDishes">Dish on these dishes &raquo;</a></p>

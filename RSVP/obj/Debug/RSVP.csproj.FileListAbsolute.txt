@@ -78,3 +78,7 @@ C:\Users\bvalentic\source\repos\RSVP\RSVP\obj\Debug\RSVP.csproj.CoreCompileInput
 C:\Users\bvalentic\source\repos\RSVP\RSVP\obj\Debug\RSVP.csproj.CopyComplete
 C:\Users\bvalentic\source\repos\RSVP\RSVP\obj\Debug\RSVP.dll
 C:\Users\bvalentic\source\repos\RSVP\RSVP\obj\Debug\RSVP.pdb
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\EntityFramework.dll
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\EntityFramework.SqlServer.dll
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\EntityFramework.xml
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\EntityFramework.SqlServer.xml

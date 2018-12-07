@@ -7,16 +7,20 @@
     <h6>That's English for "what dish are you bringing?"</h6>
 </div>
 
-<form action="~/Home/DishConfirm/" method="post" onsubmit="return ValidateDish()">
+<form action="~/Home/SaveDish/" method="post" >
+    <p class="text-danger">@ViewBag.ErrorMessage</p>
     <fieldset>
         <legend>Guest Information</legend>
         <div class="form-group">
             <label for="firstName">Full name</label>
-            <input type="text" class="form-control" id="guestName" name="guestName" placeholder="Full name" required>
+            <input type="text" class="form-control" id="PersonName" name="PersonName" placeholder="Full name" 
+                    required>
         </div>
         <div class="form-group">
             <label for="lastName">Phone number</label>
-            <input type="tel" class="form-control" id="phone" name="phone" placeholder="555-555-5555" required>
+            <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="555-555-5555"
+                    required>
+            <small class="form-text text-muted">(10 digits, may include "-")</small>
         </div>
     </fieldset>
     <fieldset class="form-group">
@@ -24,20 +28,17 @@
         <fieldset>
             <div class="form-group">
                 <label for="dishName">Dish name</label>
-                <input type="text" class="form-control" id="dishName" name="dishName" placeholder="Dish name" required>
+                <input type="text" class="form-control" id="DishName" name="DishName" placeholder="Dish name" >
             </div>
             <div class="form-group">
                 <label for="description">Dish description</label>
-                <input type="text" class="form-control" id="description" name="description" placeholder="Description" required>
+                <input type="text" class="form-control" id="DishDescription" name="DishDescription" placeholder="Description" >
             </div>
-
         </fieldset>
-        <div class="form-check">
-            <label class="form-check-label">
-                Select all that apply: <br>
-                <input class="form-check-input" type="checkbox" name="glutenFree" id="glutenFree" value="true">Gluten free <br>
-                <input class="form-check-input" type="checkbox" name="vegan" id="vegan" value="true">Vegan <br>
-                <input class="form-check-input" type="checkbox" name="vegetarian" id="vegetarian" value="true">Vegetarian <br>
+        <div class="form-group">
+            <label for="Option">
+                Enter any dietary concerns for this item, if any (gluten-free, vegan, vegetarian, etc.): <br>
+                <input class="form-control" type="text" name="Option" id="Option" placeholder="Dietary concerns"> <br>
             </label>
         </div>
     </fieldset>

@@ -7,22 +7,22 @@
     <h6>That's French for "tell us if you're coming"</h6>
 </div>
 
-<form action="~/Home/RSVPConfirm/" method="post" onsubmit="return validateRSVP()">
+<form action="~/Home/SaveGuest/" method="post" onsubmit="return validateRSVP()">
     <fieldset>
         <legend>Guest Information</legend>
         <div class="form-group has-danger">
             <label class="form-control-label" for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" required>
+            <input type="text" class="form-control" id="firstName" name="FirstName" placeholder="First name" required>
             <div class="invalid-feedback">First name entry invalid.</div>
         </div>
         <div class="form-group">
             <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name" required>
+            <input type="text" class="form-control" id="lastName" name="LastName" placeholder="Last name" required>
             <div class="invalid-feedback">Last name entry invalid.</div>
         </div>
         <div class="form-group">
             <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <input type="email" class="form-control" id="email" name="EmailAddress" aria-describedby="emailHelp" placeholder="Enter email" required>
             <small id="emailHelp" class="form-text text-muted">We only share your email with companies that pay for it</small>
             <div class="invalid-feedback">Email address invalid.</div>
         </div>
@@ -35,7 +35,7 @@
                     <input type="radio" class="form-check-input" name="Attending" id="Attending" value="true" required onclick="revealDate()">
                     I will be attending
                     <br>
-                    <input type="radio" class="form-check-input" name="Attending" id="NotAttending" value="false" required onclick="hideDate()">
+                    <input type="radio" class="form-check-input" name="Attending" id="NotAttending" value="false" onclick="hideDate()">
                     I will not be attending
                     <br>
                 </label>
@@ -43,16 +43,20 @@
         </fieldset>
         <div class="form-check">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="plusOne" id="plusOne" value="true">
+                <input class="form-check-input" type="checkbox" name="plusOne" id="plusOne" value="true" onclick="hideGuest()">
                 I will be bringing a guest
             </label>
+            <div id="guestField">
+                <label>Enter the name of your guest:</label>
+                <input type="text" class="form-control" id="Guest1" name="Guest1" placeholder="Guest name" />
+            </div>
         </div>
         <div class="form-check" id="date">
             <label class="form-check-label">Select the date you will be attending:</label> <br>
-            <input type="radio" class="form-check-input" name="Date" id="DateOne" value="1" required>
+            <input type="radio" class="form-check-input" name="AttendanceDate" id="DateOne" value="12/15/2018" >
             12/15/2018
             <br>
-            <input type="radio" class="form-check-input" name="Date" id="DateTwo" value="2" required>
+            <input type="radio" class="form-check-input" name="AttendanceDate" id="DateTwo" value="12/22/2018" >
             12/22/2018
             <br>
         </div>

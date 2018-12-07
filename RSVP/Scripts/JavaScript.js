@@ -1,5 +1,6 @@
 ﻿
 document.getElementById("date").style.visibility = "hidden";
+document.getElementById("guestField").style.visibility = "hidden";
 
 function validateRSVP() {
     var numError = 0;
@@ -64,4 +65,14 @@ function hideDate() {
     document.getElementById("date").style.visibility = "hidden";
     document.getElementById("plusOne").checked = false;
     document.getElementById("plusOne").disabled = true;
+}
+
+function hideGuest() {
+    if (document.getElementById("guestField").style.visibility === "visible") {
+        document.getElementById("guestField").style.visibility = "hidden";
+    }
+    else if (document.getElementById("guestField").style.visibility === "hidden") {
+        document.getElementById("guestField").style.visibility = "visible";
+    }
+    
 }

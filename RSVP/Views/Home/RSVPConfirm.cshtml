@@ -9,17 +9,19 @@
     <h4>Here's what we've got:</h4>
     <ul>
         <li>Name: @Model.FirstName @Model.LastName</li>
-        <li>Email: @Model.Email</li>
+        <li>Email: @Model.EmailAddress</li>
         @{
-            if (Model.Attending)
+            if (Model.AttendanceDate != null)
             {
-                if (Model.PlusOne)
+                if (Model.Guest1 != null)
                 {
-                    <li>Attending: Yes (+1)</li>
+                    <li>Attending: Yes (w/@Model.Guest1)</li>
+                    <li>Date attending: @Model.AttendanceDate</li>
                 }
                 else
                 {
                     <li>Attending: Yes</li>
+                    <li>Date attending: @Model.AttendanceDate</li>
                 }
             }
             else
@@ -33,7 +35,7 @@
 <h4>@ViewBag.ConfirmMessage</h4>
 
 @{
-    if (Model.Attending)
+    if (Model.AttendanceDate != null)
     {
         <p>How about submitting the dish you're bringing while you're at it?</p>
         <p><a class="btn btn-primary" href="/Home/BringADish">Dish it out &raquo;</a></p>
