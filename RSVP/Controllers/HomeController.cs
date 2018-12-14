@@ -46,7 +46,6 @@ namespace RSVP.Controllers
             return View(guest);
         }
 
-        [Authorize]
         public ActionResult ViewGuests()
         {
             PartyDBEntities DB = new PartyDBEntities();

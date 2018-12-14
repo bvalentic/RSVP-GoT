@@ -27,7 +27,7 @@ namespace RSVP
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login")
+                LoginPath = new PathString("/Identity/Login")
             });
         }
     }

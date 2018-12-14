@@ -6,10 +6,10 @@
     </Key>
     <Property Name="DishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
-    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="24" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="DishName" Type="nvarchar" MaxLength="50" />
-    <Property Name="DishDescription" Type="nvarchar" MaxLength="100" />
-    <Property Name="Option" Type="nvarchar" MaxLength="20" />
+    <Property Name="DishDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="Option" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Guest">
     <Key>
