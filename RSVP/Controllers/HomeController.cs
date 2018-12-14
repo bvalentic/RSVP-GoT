@@ -46,6 +46,7 @@ namespace RSVP.Controllers
             return View(guest);
         }
 
+        [Authorize]
         public ActionResult ViewGuests()
         {
             PartyDBEntities DB = new PartyDBEntities();
@@ -96,6 +97,7 @@ namespace RSVP.Controllers
             return View(dish);
         }
 
+        [Authorize]
         public ActionResult ViewDishes()
         {
             PartyDBEntities DB = new PartyDBEntities();

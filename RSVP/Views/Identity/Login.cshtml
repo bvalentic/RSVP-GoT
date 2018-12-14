@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+@model RSVP.Models.RegistrationModel
+
+<h2>Login</h2>
+
+<form action="~/Identity/Login" method="post" onsubmit="return validateRSVP()">
+    <fieldset>
+        <legend>User Information</legend>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" class="form-control" id="email" name="EmailAddress" aria-describedby="emailHelp" placeholder="Enter email" required>
+            <div class="invalid-feedback">Email address invalid.</div>
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" id="Password" name="Password" placeholder="Password">
+        </div>
+    </fieldset>
+    <input class="btn" type="submit" value="Login" />
+</form>
+
+
+        
+        

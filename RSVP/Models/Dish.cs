@@ -11,23 +11,13 @@ namespace RSVP.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Dish
     {
         public int DishID { get; set; }
-        [RegularExpression(@"[A-z]+ [A-z]+",
-            ErrorMessage ="Name must follow [First] [Last] format.")]
         public string PersonName { get; set; }
-        [RegularExpression(@"[0-9]{10}|[0-9]{3}-[0-9]{3}-[0-9]{4}", 
-            ErrorMessage ="Phone number can be either [xxxxxxxxxx] or [xxx-xxx-xxxx] format.")]
         public string PhoneNumber { get; set; }
-        [Required]
-        [DisplayName("Dish Name")]
         public string DishName { get; set; }
-        [Required]
-        [DisplayName("Dish Description")]
         public string DishDescription { get; set; }
         public string Option { get; set; }
     }
