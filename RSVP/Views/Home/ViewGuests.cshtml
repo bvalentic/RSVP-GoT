@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Guest List";
+}
+
+<div class="jumbotron">
+    <h2>@ViewBag.Title</h2>
+    <h3>@ViewBag.Message</h3>
+    <h6>Especially if they're lame</h6>
+</div>
+<p>@ViewBag.ErrorMessage</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Guest ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Attendance Date</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Plus 1</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var guest in ViewBag.GuestList)
+        {
+            <tr>
+                <th scope="row">@guest.GuestID</th>
+                <td>@guest.FirstName</td>
+                <td>@guest.LastName</td>
+                <td>@guest.AttendanceDate</td>
+                <td>@guest.EmailAddress</td>
+                <td>@guest.Guest1</td>
+                <td><a href="~/Home/EditGuest?GuestID=@guest.GuestID">Edit guest</a></td>
+                <td><a href="~/Home/DeleteGuest?GuestID=@guest.GuestID">Delete guest</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="~/Home/RSVP/" class="btn btn-group">Add a new guest to the database</a>
+
+<ul class="pagination">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
