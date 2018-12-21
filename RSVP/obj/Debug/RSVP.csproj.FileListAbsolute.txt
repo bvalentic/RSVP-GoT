@@ -301,3 +301,9 @@ C:\Users\bvalentic\OneDrive - KNEX\Downloads\RSVP-Post-DueDate\RSVP-Post-DueDate
 C:\Users\bvalentic\OneDrive - KNEX\Downloads\RSVP-Post-DueDate\RSVP-Post-DueDate\RSVP\obj\Debug\RSVP.csproj.CopyComplete
 C:\Users\bvalentic\OneDrive - KNEX\Downloads\RSVP-Post-DueDate\RSVP-Post-DueDate\RSVP\obj\Debug\RSVP.dll
 C:\Users\bvalentic\OneDrive - KNEX\Downloads\RSVP-Post-DueDate\RSVP-Post-DueDate\RSVP\obj\Debug\RSVP.pdb
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Net.Http.Formatting.dll
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Web.Http.dll
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Web.Http.WebHost.dll
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Net.Http.Formatting.xml
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Web.Http.xml
+C:\Users\bvalentic\source\repos\RSVP\RSVP\bin\System.Web.Http.WebHost.xml
