@@ -24,6 +24,7 @@ namespace RSVP.Controllers
         public ActionResult SaveGuest(Guest guest)
         {
             PartyDBEntities DB = new PartyDBEntities();
+            guest.Character = DB.Characters.Find(guest.CharacterID);
             DB.Guests.Add(guest);
             DB.SaveChanges();
 

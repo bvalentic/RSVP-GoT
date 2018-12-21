@@ -7,6 +7,8 @@
       <Diagram DiagramId="cf55dafac83a46f790b86edce347b4e7" Name="Diagram1">
         <EntityTypeShape EntityType="PartyDBModel.Dish" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PartyDBModel.Guest" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PartyDBModel.Character" Width="1.5" PointX="5.125" PointY="0.75" />
+        <AssociationConnector Association="PartyDBModel.FK_Guest_Character" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

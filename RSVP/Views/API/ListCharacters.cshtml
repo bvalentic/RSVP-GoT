@@ -2,12 +2,10 @@
 
 <h2>List of Characters</h2>
 
-<p>@ViewBag.Characters["characters"][1]["name"]</p>
-
 <table class="table">
     <tr>
         <th>Name</th>
-        <th>House</th>
+        <th>Gender</th>
         <th>Allegiance(s) (if any)</th>
         <th>Book(s) featured</th>
     </tr>
@@ -15,7 +13,9 @@
     {
         <tr>
             <td>@character["name"]</td>
-            <td></td>
+            <td>@character["gender"]</td>
+            <td>@character["allegiances"]</td>
+            <td>@character["books"]</td>
         </tr>
     }
 </table>

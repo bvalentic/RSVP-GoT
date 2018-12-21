@@ -20,5 +20,8 @@ namespace RSVP.Models
         public Nullable<System.DateTime> AttendanceDate { get; set; }
         public string EmailAddress { get; set; }
         public string Guest1 { get; set; }
+        public Nullable<int> CharacterID { get; set; }
+    
+        public virtual Character Character { get; set; }
     }
 }

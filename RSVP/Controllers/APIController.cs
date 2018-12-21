@@ -30,7 +30,6 @@ namespace RSVP.Controllers
 
             foreach (string requestString in requestArray)
             {
-
                 HttpWebRequest request = WebRequest.CreateHttp(requestString);
                 request.UserAgent = userAgent;
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -44,6 +43,41 @@ namespace RSVP.Controllers
                 }
             }
             ViewBag.Characters = JObject.Parse("{characters: [" + ViewBag.Characters + "]}");
+
+            foreach (var i in ViewBag.Characters["characters"])
+            {
+                foreach (var a in i["allegiances"])
+                {
+                    HttpWebRequest request = WebRequest.CreateHttp(a.ToString());
+                    request.UserAgent = userAgent;
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        StreamReader data = new StreamReader(response.GetResponseStream());
+                        string stringData = data.ReadToEnd();
+                        JObject allegiances = JObject.Parse(stringData);
+                        ViewBag.Allegiances += allegiances["name"] + ", ";
+                    }
+                }
+                i["allegiances"] = ViewBag.Allegiances;
+
+                foreach (var b in i["books"])
+                {
+                    HttpWebRequest request = WebRequest.CreateHttp(b.ToString());
+                    request.UserAgent = userAgent;
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        StreamReader data = new StreamReader(response.GetResponseStream());
+                        string stringData = data.ReadToEnd();
+                        JObject books = JObject.Parse(stringData);
+                        ViewBag.Books += books["name"] + ", ";
+                    }
+                }
+                i["books"] = ViewBag.Books;
+            }
 
             return View();
         }

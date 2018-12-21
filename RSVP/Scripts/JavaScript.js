@@ -1,6 +1,5 @@
 ﻿
-document.getElementById("date").style.visibility = "hidden";
-document.getElementById("guestField").style.visibility = "hidden";
+
 
 function validateRSVP() {
     var numError = 0;
@@ -58,11 +57,13 @@ function validateEmail() {
 
 function revealDate() {
     document.getElementById("date").style.visibility = "visible";
+    document.getElementById("character").style.visibility = "visible";
     document.getElementById("plusOne").disabled = false;
 }
 
 function hideDate() {
     document.getElementById("date").style.visibility = "hidden";
+    document.getElementById("character").style.visibility = "hidden";
     document.getElementById("plusOne").checked = false;
     document.getElementById("plusOne").disabled = true;
 }
