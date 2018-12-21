@@ -7,8 +7,8 @@
     <Property Name="CharacterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" />
     <Property Name="Gender" Type="nvarchar" MaxLength="50" />
-    <Property Name="Allegiance" Type="nvarchar" MaxLength="50" />
-    <Property Name="Book" Type="nvarchar" MaxLength="500" />
+    <Property Name="Allegiance" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Book" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Dish">
     <Key>

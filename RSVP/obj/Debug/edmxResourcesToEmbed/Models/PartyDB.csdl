@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PartyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Character">
+    <Key>
+      <PropertyRef Name="CharacterID" />
+    </Key>
+    <Property Name="CharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Allegiance" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Book" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Guests" Relationship="Self.FK_Guest_Character" FromRole="Character" ToRole="Guest" />
+  </EntityType>
   <EntityType Name="Dish">
     <Key>
       <PropertyRef Name="DishID" />
@@ -22,32 +33,11 @@
     <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Guest1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CharacterID" Type="Int32" />
-    <NavigationProperty Name="Character" Relationship="PartyDBModel.FK_Guest_Character" FromRole="Guest" ToRole="Character" />
-  </EntityType>
-  <EntityContainer Name="PartyDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Dishes" EntityType="Self.Dish" />
-    <EntitySet Name="Guests" EntityType="Self.Guest" />
-    <EntitySet Name="Characters" EntityType="PartyDBModel.Character" />
-    <AssociationSet Name="FK_Guest_Character" Association="PartyDBModel.FK_Guest_Character">
-      <End Role="Character" EntitySet="Characters" />
-      <End Role="Guest" EntitySet="Guests" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Character">
-    <Key>
-      <PropertyRef Name="CharacterID" />
-    </Key>
-    <Property Name="CharacterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Allegiance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Book" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Guests" Relationship="PartyDBModel.FK_Guest_Character" FromRole="Character" ToRole="Guest" />
-    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Character" Relationship="Self.FK_Guest_Character" FromRole="Guest" ToRole="Character" />
   </EntityType>
   <Association Name="FK_Guest_Character">
-    <End Type="PartyDBModel.Character" Role="Character" Multiplicity="0..1" />
-    <End Type="PartyDBModel.Guest" Role="Guest" Multiplicity="*" />
+    <End Role="Character" Type="Self.Character" Multiplicity="0..1" />
+    <End Role="Guest" Type="Self.Guest" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Character">
         <PropertyRef Name="CharacterID" />
@@ -57,4 +47,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="PartyDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Characters" EntityType="Self.Character" />
+    <EntitySet Name="Dishes" EntityType="Self.Dish" />
+    <EntitySet Name="Guests" EntityType="Self.Guest" />
+    <AssociationSet Name="FK_Guest_Character" Association="Self.FK_Guest_Character">
+      <End Role="Character" EntitySet="Characters" />
+      <End Role="Guest" EntitySet="Guests" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

@@ -17,21 +17,37 @@
             <th scope="col">Attendance Date</th>
             <th scope="col">Email Address</th>
             <th scope="col">Plus 1</th>
+            <th scope="col">Character</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var guest in ViewBag.GuestList)
         {
-            <tr>
-                <th scope="row">@guest.GuestID</th>
-                <td>@guest.FirstName</td>
-                <td>@guest.LastName</td>
-                <td>@guest.AttendanceDate</td>
-                <td>@guest.EmailAddress</td>
-                <td>@guest.Guest1</td>
-                <td><a href="~/Home/EditGuest?GuestID=@guest.GuestID">Edit guest</a></td>
-                <td><a href="~/Home/DeleteGuest?GuestID=@guest.GuestID">Delete guest</a></td>
-            </tr>
+        <tr>
+            <th scope="row">@guest.GuestID</th>
+            <td>@guest.FirstName</td>
+            <td>@guest.LastName</td>
+            <td>@guest.AttendanceDate</td>
+            <td>@guest.EmailAddress</td>
+            <td>@guest.Guest1</td>
+            @if (guest.Character != null)
+            {
+                <td>@guest.Character.Name</td>
+                <td>
+                <form action="~/API/ViewCharacter">
+                    <input type="hidden" value="@guest.CharacterID" />
+                    <input type="submit" value="View bio"/>
+                </form>
+                </td>
+            }
+            else
+            {
+                <td></td>
+                <td></td>
+            }
+            <td><a href="~/Home/EditGuest?GuestID=@guest.GuestID">Edit guest</a></td>
+            <td><a href="~/Home/DeleteGuest?GuestID=@guest.GuestID">Delete guest</a></td>
+        </tr>
         }
     </tbody>
 </table>

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using RSVP.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -80,6 +81,15 @@ namespace RSVP.Controllers
             }
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ViewCharacter(string characterID)
+        {
+            PartyDBEntities DB = new PartyDBEntities();
+            Character character = DB.Characters.Find(characterID);
+
+            return View(character);
         }
     }
 }

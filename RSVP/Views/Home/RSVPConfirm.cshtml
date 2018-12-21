@@ -23,7 +23,16 @@
                     <li>Attending: Yes</li>
                     <li>Date attending: @Model.AttendanceDate</li>
                 }
-                <li>Character chosen: @Model.CharacterID</li>
+                if (Model.Character != null)
+                {
+                    <li>@Model.Character.Name</li>
+                    <li>
+                        <form action="~/API/ViewCharacter">
+                            <input type="hidden" value="@Model.CharacterID" />
+                            <input type="submit" value="View bio" />
+                        </form>
+                    </li>
+                }
             }
             else
             {

@@ -1,6 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="PartyDBModelStoreContainer" CdmEntityContainer="PartyDBEntities">
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="PartyDBModel.Character">
+        <MappingFragment StoreEntitySet="Character">
+          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Allegiance" ColumnName="Allegiance" />
+          <ScalarProperty Name="Book" ColumnName="Book" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Dishes">
       <EntityTypeMapping TypeName="PartyDBModel.Dish">
         <MappingFragment StoreEntitySet="Dish">
@@ -16,23 +27,12 @@
     <EntitySetMapping Name="Guests">
       <EntityTypeMapping TypeName="PartyDBModel.Guest">
         <MappingFragment StoreEntitySet="Guest">
-          <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
           <ScalarProperty Name="GuestID" ColumnName="GuestID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="AttendanceDate" ColumnName="AttendanceDate" />
           <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
           <ScalarProperty Name="Guest1" ColumnName="Guest" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Characters">
-      <EntityTypeMapping TypeName="PartyDBModel.Character">
-        <MappingFragment StoreEntitySet="Character">
-          <ScalarProperty Name="Gender" ColumnName="Gender" />
-          <ScalarProperty Name="Book" ColumnName="Book" />
-          <ScalarProperty Name="Allegiance" ColumnName="Allegiance" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
         </MappingFragment>
       </EntityTypeMapping>
