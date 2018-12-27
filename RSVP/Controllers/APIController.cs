@@ -19,37 +19,21 @@ namespace RSVP.Controllers
         [HttpGet]
         public ActionResult ListCharacters()
         {
-            //I grabbed 5 GoT characters I knew the names of, threw them into an array, 
-            //requested each one individually, and added them to the character ViewBag
-            string[] requestArray = new string[] {
+            if (ViewBag.Characters == null)
+            {
+                //I grabbed 5 GoT characters I knew the names of, threw them into an array, 
+                //requested each one individually, and added them to the character ViewBag
+                string[] requestArray = new string[] {
                 "https://www.anapioficeandfire.com/api/characters/1022", //Theon
                 "https://www.anapioficeandfire.com/api/characters/238", //Cersei
-                "https://www.anapioficeandfire.com/api/characters/957", //Jon Snow
-                "https://www.anapioficeandfire.com/api/characters/583", //Sansa
+                "https://www.anapioficeandfire.com/api/characters/957", //Sansa
+                "https://www.anapioficeandfire.com/api/characters/583", //Jon Snow
                 "https://www.anapioficeandfire.com/api/characters/271" //Daenerys
             };
 
-            foreach (string requestString in requestArray)
-            {
-                HttpWebRequest request = WebRequest.CreateHttp(requestString);
-                request.UserAgent = userAgent;
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                if (response.StatusCode == HttpStatusCode.OK)
+                foreach (string requestString in requestArray)
                 {
-                    StreamReader data = new StreamReader(response.GetResponseStream());
-                    string stringData = data.ReadToEnd();
-                    JObject characters = JObject.Parse(stringData);
-                    ViewBag.Characters += characters+",";
-                }
-            }
-            ViewBag.Characters = JObject.Parse("{characters: [" + ViewBag.Characters + "]}");
-
-            foreach (var i in ViewBag.Characters["characters"])
-            {
-                foreach (var a in i["allegiances"])
-                {
-                    HttpWebRequest request = WebRequest.CreateHttp(a.ToString());
+                    HttpWebRequest request = WebRequest.CreateHttp(requestString);
                     request.UserAgent = userAgent;
                     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
@@ -57,34 +41,52 @@ namespace RSVP.Controllers
                     {
                         StreamReader data = new StreamReader(response.GetResponseStream());
                         string stringData = data.ReadToEnd();
-                        JObject allegiances = JObject.Parse(stringData);
-                        ViewBag.Allegiances += allegiances["name"] + ", ";
+                        JObject characters = JObject.Parse(stringData);
+                        ViewBag.Characters += characters + ",";
                     }
                 }
-                i["allegiances"] = ViewBag.Allegiances;
+                ViewBag.Characters = JObject.Parse("{characters: [" + ViewBag.Characters + "]}");
 
-                foreach (var b in i["books"])
+                foreach (var i in ViewBag.Characters["characters"])
                 {
-                    HttpWebRequest request = WebRequest.CreateHttp(b.ToString());
-                    request.UserAgent = userAgent;
-                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-
-                    if (response.StatusCode == HttpStatusCode.OK)
+                    foreach (var a in i["allegiances"])
                     {
-                        StreamReader data = new StreamReader(response.GetResponseStream());
-                        string stringData = data.ReadToEnd();
-                        JObject books = JObject.Parse(stringData);
-                        ViewBag.Books += books["name"] + ", ";
-                    }
-                }
-                i["books"] = ViewBag.Books;
-            }
+                        HttpWebRequest request = WebRequest.CreateHttp(a.ToString());
+                        request.UserAgent = userAgent;
+                        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            StreamReader data = new StreamReader(response.GetResponseStream());
+                            string stringData = data.ReadToEnd();
+                            JObject allegiances = JObject.Parse(stringData);
+                            ViewBag.Allegiances += allegiances["name"] + ", ";
+                        }
+                    }
+                    i["allegiances"] = ViewBag.Allegiances;
+
+                    foreach (var b in i["books"])
+                    {
+                        HttpWebRequest request = WebRequest.CreateHttp(b.ToString());
+                        request.UserAgent = userAgent;
+                        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            StreamReader data = new StreamReader(response.GetResponseStream());
+                            string stringData = data.ReadToEnd();
+                            JObject books = JObject.Parse(stringData);
+                            ViewBag.Books += books["name"] + ", ";
+                        }
+                    }
+                    i["books"] = ViewBag.Books;
+                }
+            }
             return View();
         }
 
         [HttpGet]
-        public ActionResult ViewCharacter(string characterID)
+        public ActionResult ViewCharacter(int characterID)
         {
             PartyDBEntities DB = new PartyDBEntities();
             Character character = DB.Characters.Find(characterID);

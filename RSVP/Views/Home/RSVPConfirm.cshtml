@@ -27,7 +27,7 @@
                 {
                     <li>@Model.Character.Name</li>
                     <li>
-                        <form action="~/API/ViewCharacter">
+                        <form action="~/API/ViewCharacter" method="get">
                             <input type="hidden" value="@Model.CharacterID" />
                             <input type="submit" value="View bio" />
                         </form>

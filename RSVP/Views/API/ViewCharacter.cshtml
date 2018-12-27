@@ -1,7 +1,10 @@
-﻿
+﻿@model RSVP.Models.Character
+
 @{
-    ViewBag.Title = "ViewCharacter";
+    ViewBag.Title = "View Character";
 }
+
+<h4>@ViewBag.Title</h4>
 
 <table class="table">
     <tr>
@@ -10,11 +13,13 @@
         <th>Allegiance(s) (if any)</th>
         <th>Book(s) featured</th>
     </tr>
+    @if (Model != null)
+    {
     <tr>
         <td>@Model.Name</td>
         <td>@Model.Gender</td>
-        <td>@Model.Allegiances</td>
-        <td>@Model.Books</td>
+        <td>@Model.Allegiance</td>
+        <td>@Model.Book</td>
     </tr>
-    
+    }
 </table>

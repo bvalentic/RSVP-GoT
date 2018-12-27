@@ -34,10 +34,7 @@
             {
                 <td>@guest.Character.Name</td>
                 <td>
-                <form action="~/API/ViewCharacter">
-                    <input type="hidden" value="@guest.CharacterID" />
-                    <input type="submit" value="View bio"/>
-                </form>
+                    <a href="~/API/ViewCharacter?CharacterID=@guest.CharacterID">View bio</a>
                 </td>
             }
             else
